@@ -93,7 +93,7 @@
            [(equal? OP 'NEQ) (false? (equal? (calculate4 a) (calculate4 b)))]
            [(equal? OP 'AND) (and (calculate4 a) (calculate4 b))]
            [(equal? OP 'ORR) (or (calculate4 a) (calculate4 b))]
-           [(equal? OP 'NOTT) (not (calculate4 a) (calculate4 b))]
+           [(equal? OP 'NOTT) (not (calculate4 a) (calculate4 b))] ; I wasn't sure what NOTT was supposed to do...
            )
          ]
         )
