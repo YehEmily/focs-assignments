@@ -1,5 +1,6 @@
 #lang racket
 
+
 ;;; Student Name: Emily Yeh
 ;;;
 ;;; Check one:
@@ -56,6 +57,7 @@
 ;;
 ;; Add the `lookup-list` argument to your hw2 evaluator (or ours, from the solution set).
 ;; `(evaluate 'foo lookup-list)` should return whatever `'foo` is associated with in `lookup-list`.
+
 
 (define (apply-operator op args)
   (cond [(eq? op 'ADD) (+ (first args) (second args))]
