@@ -36,7 +36,6 @@ A typical read-eval-print loop reads an expression, evaluates it (using a mechan
   (newline)
   (repl))
 
-
 (define (myeval sexpr)
   sexpr)
 
@@ -45,9 +44,14 @@ A typical read-eval-print loop reads an expression, evaluates it (using a mechan
 ;;   it is read as though it were quoted already.
 ```
 
-You should modify the code above to call the calculator / evaluator you wrote for the previous homework rather than `mini-eval`.  (Alternately, you can modify the deinition of `mini-eval` to do what your calculator/evaluator does.)  This will turn your one-shot calculation / evaluation program into a REPL.  Note that you will have to modify your REPL to account for the environment -- the `lookup-list` -- that your latest version of `evaluate` expects. 
+You should modify the code above to call the calculator / evaluator you wrote for the previous homework rather than `mini-eval`.
+(Alternately, you can modify the definition of `mini-eval` to do what your calculator/evaluator does.)
+This will turn your one-shot calculation / evaluation program into a REPL.
+Note that you will have to modify your REPL to account for the environment – the `lookup-list` – that your latest version of `evaluate` expects. 
 
-Running your REPL should now look something like the following. In this transcript, everything that follows a `mini-eval>> ` is typed by the user; everything else is printed by your program.  Also note the absence of quotes. 
+Running your REPL should now look something like the following.
+In this transcript, everything that follows a `mini-eval>> ` is typed by the user; everything else is printed by your program.
+Also note the absence of quotes. 
 
 ``` scheme
 (run-repl)
@@ -103,6 +107,14 @@ mini-eval>> incr
 
 Note 1: The printed value of a lambda expression such as `(lambda (a b) (SUM a b))` depends on the implementation of your interpreter. This is an example from my implementation, which represents a function as the lambda form that defined it plus the lookup list at that time.  I assumed that the lookup list already contained x --> 3 and y --> 2 before the first LAMBDA is evaluated.  By the time the second LAMBDA is evaluated (in the DEFINE incr line), the lookup list also contains a binding for a —> 6 (but not yet incr --> LAMBDA... 
 
+### Intermezzo: Implementation Hints
+
+(a) You should use the `operator-association-list` as your initial environment [This was in the solution set to the second homework, if you don’t want to create it yourself.] This creates bindings for things like `'ADD` (to scheme’s plus procedure) in the global environment.
+
+(b) In `evaluate`, if the thing you are handed is a list, you should evaluate the first thing (the operator) and the rest of the things (the arguments), then apply the value of the operator (which might, *e.g.*, be scheme’s plussing thing, but is not `'ADD` any more, since you looked it up) to the values of the arguments. This probably means changing your apply-operator to *not* do the lookup-in-the-lookup-list step, since it happened in `evaluate`. [Again, feel free to use what was in the prior solution, but remove the lookup/assq bit.]
+
+(c) In later stages, when you might also have a value that is a closure (*i.e.*, what you get from evaluating a LAMBDA), you can follow the instructions in the current pset for applying those….
+You will do that by extending `apply-operator` to handle the closure case as described there (rather than by creating a new `apply-proc` procedure).
 
 ### 4.  Allow your user to apply `LAMBDA`s 
 
