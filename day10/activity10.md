@@ -49,12 +49,13 @@ Consider the context-free grammar G:
 S   -> NP VP
 NP  -> NP PP
 NP  -> DET N
+VP  -> V NP
 VP  -> VP PP
 DET -> a | the
-N  -> boy | girl | flowers | binoculars
-V  -> touches | sees
-PP -> P NP
-P  -> in | from | with
+N   -> boy | girl | flowers | binoculars
+V   -> touches | sees
+PP  -> P NP
+P   -> in | from | with
 ```
 
 a. Show that the string "the girl touches the boy with the flower" has two
