@@ -8,7 +8,7 @@ In either case, add your name and check one of the boxes.
 Student Name: Frankly Olin [change to your name]
 Check one:
 [ ] I completed this assignment without assistance or external resources.
-[ ] I completed this assignment with assistance from ___
+[X] I completed this assignment with assistance from Leon Lam
     and/or using these external resources: ___
 
 I. Math
@@ -19,14 +19,29 @@ For each of the following pairs of functions, identify a multiplier and a minimu
 
 
   A. 367n+1098     and     2n                  [n0 = 40; k=200]
-  B. n^2 + 2n + 6    and     6n^2 - 25
-  C. n^3 + n^2 - 2n     and     6n^2 - 25
-  D. 869,438    and    923
-  E. 2^n    and    3^n
-  F. 3^n    and    2^n
-  G. log_2 n     and    log_10 n    [NB:  these are intended to be log-base-2 of n and log-base-10 of n]
-  H. log_10 n^2    and     log_2 n
 
+  B. n^2 + 2n + 6    and     6n^2 - 25
+n0 = 100, k = 1
+
+  C. n^3 + n^2 - 2n     and     6n^2 - 25
+n0 = 100, k = 17
+
+  D. 869,438    and    923
+There are no such values because these two numbers are constants, and therefore, f(n) will always grow no faster than g(n) for any value of n0 or k that I choose.
+
+  E. 2^n    and    3^n
+In this case, for any value of n0 and any value of k such that k>1, f(n) will always grow no faster than g(n) because 3^n always grows faster than 2^n for any value of n.
+
+  F. 3^n    and    2^n
+n0 = 100, k = 4.5×10^17
+
+  G. log_2 n     and    log_10 n    [NB:  these are intended to be log-base-2 of n and log-base-10 of n]
+n0 = 100, k = 4
+
+  H. log_10 n^2    and     log_2 n
+For any value of n0 and k such that k>1, f(n) will always grow no faster than g(n) because log_2 n will always grow faster than log_10 n^2 for any value of n.
+
+** I calculated all of these values for k by putting n0 into the equations for f(n) and g(n) and trying to find a coefficient that would make g(n) >= f(n). I don't know if this is the correct way to do this, though... **
 
 II. Linear data structures
 
@@ -35,16 +50,34 @@ For the following problem, assume that it costs 1 unit to access a structure -- 
 Assume that you have n elements stored in an array and the same n elements stored in a linked list; you have no other references to these data structures.  You may assume that n > 10.  How much does it cost to perform each of the following actions?
 
   A. Read the value of the first element in the array?  In the list?
+To access and read the first element in the array, it costs 1 unit. To access and read the first element in the list, it costs 1 unit.
+
   B. Read the value of the seventh element in the array?  In the list?
+To access and read the value of the seventh element in the array, it costs 1 unit. To access and read the seventh element in the list, however, it costs 2 (to read the "next" pointer and access the next element) + 1 + 1 + 1 + 1 + 1 = 7 units total.
+
   C. Add an element to the array?  [Where is the cheapest place to add it?]  To the list?  [Where is the cheapest place to add it?]
+Adding an element to an array costs 1 unit, if you add it to the end of the array, so adding an element to the end of the array is the cheapest way. Otherwise, it costs as many units as the number of elements that are shifted to add a new element elsewhere. On the other hand, for a list, the cheapest place to add an element would be the beginning, because it only costs 1 unit to access and add an element to that location. Anywhere else, it would cost more units to access the location.
+
   D. Delete the fifth element from the array?  From the list?
+It costs 1 unit to delete the fifth element from the array, and 5 units to delete the fifth element from the list.
+
   E. Confirm that a particular element -- say x -- is present in the array?  In the list?
+It would cost as many units as there are elements in the array, until x is found, to confirm whether a particular element is in the array, since it costs 1 unit to access each element. The same can be said for a list.
+
   F. Confirm that a particular element -- say y -- is NOT present in the array?  In the list?
+It would cost as many units as there are elements in the array, at least until the particular element is found, to confirm whether a particular element is NOT in the array, since it costs 1 unit to access each element. The same can be said for a list.
 
 Now assume that you can maintain one extra piece of storage for the data structure.  In the case of the array, you may want to maintain a length reference.
 In the case of the linked list, what would be similarly helpful?
+In the case of a linked list, I think a pointer to the top or the bottom of the linked list would be very helpful.
+
 G. How much would it cost now to add an element to the end of the array?  To add an element to the end of the list?
+The cost should still be 1 unit for an array, but if we know where the end of the list is, it will now only cost 1 unit to access the appropriate location and add an element.
+
 H. How much would it cost now to delete an element from the array?  From the list?  What if it were the final element?  The penultimate element?
+It would still cost the same - to delete an element costs 1 unit, but to shift everything after the element up, it costs as many units as there are elements to shift. For a list, it depends on where the element is that needs to be deleted. If it is the last element, then it only costs 1 unit to access and delete the last element (if we know where the bottom of the list is), and if it is the penultimate element, then it costs 1 + 1 = 2 elements to access and delete the element (if we know where the bottom of the list is... and if the list is doubly linked? I don't know if this list is double linked, actually...)
 
 Finally, assume that both the array and the linked list are sorted, i.e., that their elements are in some predictable order (say, comparable by < or <=).
   J. How much would it cost to confirm that a particular element -- say x -- is present in the array?  In the list?  To confirm that a particular element -- say y -- is not present in the array?  In the list?
+If I check the middle element of the array, that costs 1 unit; at this point, though, I will know which half of the array to search for the particular element. It then costs another unit to access the middle element again, and so on. (How much does this cost? It depends on the size of the array, but it should be the size of about log2n. For a linked list, however, there's no choice; you must go through the entire linked list, up until you find the element, so the cost will be as many units as it takes to find the particular element.
+For checking if the element is NOT in the array, it costs the same amount of units. However, for a linked list, we have no choice but to go through the entire linked list, so it will still cost as many units as it takes to access every element in the list (until we find the element).
