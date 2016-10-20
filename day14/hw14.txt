@@ -19,12 +19,13 @@ For each of the following pairs of functions, identify a multiplier and a minimu
 
 
   A. 367n+1098     and     2n                  [n0 = 40; k=200]
+n0 = 10, k = 3000
 
   B. n^2 + 2n + 6    and     6n^2 - 25
 n0 = 100, k = 1
 
   C. n^3 + n^2 - 2n     and     6n^2 - 25
-n0 = 100, k = 17
+There is no value of k or n0 that will make f(n) smaller or equal to g(n) because f(n) is cubic and g(n) is quadratic.
 
   D. 869,438    and    923
 There are no such values because these two numbers are constants, and therefore, f(n) will always grow no faster than g(n) for any value of n0 or k that I choose.
@@ -33,10 +34,10 @@ There are no such values because these two numbers are constants, and therefore,
 In this case, for any value of n0 and any value of k such that k>1, f(n) will always grow no faster than g(n) because 3^n always grows faster than 2^n for any value of n.
 
   F. 3^n    and    2^n
-n0 = 100, k = 4.5×10^17
+This is impossible because f(n) will always grow faster than g(n).
 
   G. log_2 n     and    log_10 n    [NB:  these are intended to be log-base-2 of n and log-base-10 of n]
-n0 = 100, k = 4
+This simplifies to log_10 2, so it's a constant. There is no value of k or n that will make f(n) smaller or equal to g(n), I think, because it is a constant.
 
   H. log_10 n^2    and     log_2 n
 For any value of n0 and k such that k>1, f(n) will always grow no faster than g(n) because log_2 n will always grow faster than log_10 n^2 for any value of n.
