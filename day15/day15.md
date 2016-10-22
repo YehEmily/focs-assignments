@@ -89,6 +89,7 @@ What other tree structures containing three internal nodes -- x, y, and z -- can
 The relationship among x, y, and z doesn't matter.  For convenience, we've arbitrarily labeled them top to bottom and the subtrees left to right.
 
 EXHIBIT A:
+```
            x
           / \
          /   \
@@ -99,10 +100,12 @@ EXHIBIT A:
     / \
    /   \
   T1   T4
+```
 
 T1 <= z <= y <= T2 <= x <= T3
 
 EXHIBIT B:
+```
           x
         /   \
        /     \
@@ -110,10 +113,12 @@ EXHIBIT B:
      / \     / \
     /   \   /   \
    T1   T2 T3   T4
+```
 
 T1 <= y <= T2 <= x <= T3 <= z <= T4
 
 EXHIBIT C:
+```
          x
         / \
        /   \
@@ -124,10 +129,12 @@ EXHIBIT C:
         / \
        /   \ 
       T3   T4
+```
 
 T1 <= x <= T3 <= z <= T4 <= y <= T2
 
 EXHIBIT D:
+```
          x
         / \
        /   \
@@ -138,6 +145,7 @@ EXHIBIT D:
               / \
              /   \
             T3   T4
+```
  
 T1 <= x <= T2 <= y <= T3 <= z <= T4
 
@@ -175,6 +183,7 @@ Use this insight to show how to modify each of the unbalanced tree forms with th
 ANSWER: Hm, I don't know if I fully understand this insight. Does this mean we can rearrange the binary trees, like this?
 
 The tree from 3:
+```
         f		       h
        / \		     /   \
       /   \		    /     \
@@ -185,9 +194,11 @@ The tree from 3:
        / \
       /   \
     T2     T3
+```
 
 
 The tree from 4, exhibit A: (Oh cool, I can basically just rotate this tree to get a balanced tree!)
+```
            x			 y
           / \		       /   \
          /   \                /     \
@@ -198,9 +209,11 @@ The tree from 4, exhibit A: (Oh cool, I can basically just rotate this tree to g
     / \
    /   \
   T1   T4
+```
 
 
 The tree from 4, exhibit C:
+```
          x			 z
         / \		       /   \
        /   \                  /     \
@@ -211,8 +224,10 @@ The tree from 4, exhibit C:
         / \
        /   \ 
       T3   T4
+```
 
 The tree from 4, exhibit D:
+```
          x			  y
         / \			/   \
        /   \                   /     \
@@ -223,6 +238,7 @@ The tree from 4, exhibit D:
               / \
              /   \
             T3   T4
+```
 
 
 ## V.  Rebalancing
@@ -255,6 +271,7 @@ ANSWER: I'm not 100% clear on what constitutes as a node, nor on what depth meas
 
 Insert the value 13 into this tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
 
+```
           8
         /   \
        /     \
@@ -268,6 +285,7 @@ Insert the value 13 into this tree.  Where does it go?  Is the resulting tree al
                      /
                     /
                    18
+```
 
 I think this tree is almost-balanced, still. The depths of all the internal nodes have not changed at all with the insertion of 13 as a right subtree of 12.
 
@@ -275,6 +293,7 @@ I think this tree is almost-balanced, still. The depths of all the internal node
 
 Insert the value 17 into the tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
 
+```
          8
         / \
        /   \
@@ -291,6 +310,7 @@ Insert the value 17 into the tree.  Where does it go?  Is the resulting tree alm
 	         /
 	        /
 	       17
+```
 
 Oh no, this tree isn't almost-balanced anymore! After inserting 17 under 18, the depth of 16's left subtree is 1, while the depth of its right subtree is 3.
 
@@ -298,6 +318,7 @@ Oh no, this tree isn't almost-balanced anymore! After inserting 17 under 18, the
 
 Insert the value 4 into the tree.  Where does it go?  Is the resulting tree almost-balanced?  If not, see #11.
 
+```
          8
         / \
        /   \
@@ -311,6 +332,7 @@ Insert the value 4 into the tree.  Where does it go?  Is the resulting tree almo
       \            /\
        \          /  \
         5        17  20
+```
 
 Oh no, I don't think this tree is almost-balanced anymore... After inserting 4 before 5, the depth of 6's left subtree is now 3, while the depth of 6's right subtree is only 1.
 
@@ -320,6 +342,7 @@ Oh no, I don't think this tree is almost-balanced anymore... After inserting 4 b
 Use the work you've done above to rebalance the tree.  Start at the newly inserted value; work up until you find an internal node that has left and right children whose depth differs by more than one.  Rebalance that subtree using the processes you created in #6.  Continue to climb the tree, rebalancing any unbalanced (not almost-balanced) nodes as you go up.
 
 Rebalancing the tree in 9:
+```
          8
         / \
        /   \
@@ -333,8 +356,10 @@ Rebalancing the tree in 9:
                    /\
                   /  \
                  17  20
+```
 	       
 Rebalancing the tree in 10:
+```
             8
         /        \
        /          \ 
@@ -348,15 +373,14 @@ Rebalancing the tree in 10:
                    /\
                   /  \
                  17  20
+```
 ### 12. 
 
 [Challenge] Assuming that a tree is almost-balanced when you make an insertion, and that that insertion may violate the almost-balanced property, can almost-balance always be restored solely by climbing the  path from the newly inserted node to the root?  Will you ever have to descend another branch?  Why or why not?
 
+I think that it will sometimes be necessary to descend another branch in order to rebalance the tree. However, I'm not sure... this is just my intuition. From #6, it appears that sometimes it is necessary to rotate the tree, in which case, technically, I think we are descending the other branch from the root to rearrange the tree.
 
-
-
-
-
+Although, on the other hand, if you insert a new node, it will always have to be inserted on the left branch (if it's less than the root) or the right branch (if it's greater than the root). Does this mean that it will still be necessary to descend another branch to rebalance the tree? I really don't know. (I hope this will be explained during the next lecture!)
 
 
 
