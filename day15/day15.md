@@ -184,13 +184,13 @@ ANSWER: Hm, I don't know if I fully understand this insight. Does this mean we c
 
 The tree from 3:
 ```
-        f		       h
-       / \		     /   \
-      /   \		    /     \
+        f                      h
+       / \                   /   \
+      /   \                 /     \
      g     T4      -->     g       f
-    / \			  / \     / \
-   /   \		 /   \   /   \
- T1     h		T1   T2 T3   T4
+    / \	                  / \     / \
+   /   \                 /   \   /   \
+ T1     h               T1   T2 T3   T4
        / \
       /   \
     T2     T3
