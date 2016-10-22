@@ -187,7 +187,7 @@ The tree from 3:
         f		       h
        / \		     /   \
       /   \		    /     \
-     g     T4	  -->	   g       f
+     g     T4      -->     g       f
     / \			  / \     / \
    /   \		 /   \   /   \
  T1     h		T1   T2 T3   T4
@@ -199,8 +199,8 @@ The tree from 3:
 
 The tree from 4, exhibit A: (Oh cool, I can basically just rotate this tree to get a balanced tree!)
 ```
-           x			 y
-          / \		       /   \
+           x                     y
+          / \                  /   \
          /   \                /     \
         y     T3    -->      z       x
        / \                  / \     / \
@@ -214,8 +214,8 @@ The tree from 4, exhibit A: (Oh cool, I can basically just rotate this tree to g
 
 The tree from 4, exhibit C:
 ```
-         x			 z
-        / \		       /   \
+         x                       z
+        / \                    /   \
        /   \                  /     \
       T1    y       -->      x       y
            / \              / \     / \
@@ -228,8 +228,8 @@ The tree from 4, exhibit C:
 
 The tree from 4, exhibit D:
 ```
-         x			  y
-        / \			/   \
+         x                        y
+        / \                     /   \
        /   \                   /     \
       T1    y       -->       x       z
            / \               / \     / \
@@ -307,9 +307,9 @@ Insert the value 17 into the tree.  Where does it go?  Is the resulting tree alm
                    /
                   /
                  18
-	         /
-	        /
-	       17
+                 /
+                /
+               17
 ```
 
 Oh no, this tree isn't almost-balanced anymore! After inserting 17 under 18, the depth of 16's left subtree is 1, while the depth of its right subtree is 3.
@@ -360,19 +360,23 @@ Rebalancing the tree in 9:
 	       
 Rebalancing the tree in 10:
 ```
-            8
-        /        \
-       /          \ 
-      4           14
-     / \          /\ 
-    /   \        /  \ 
-   3     6      12   16 
-  /      /\     /    /\ 
- /      /  \   /    /  \ 
-2      5    7 10   15   18
-                   /\
-                  /  \
-                 17  20
+             8
+            / \
+           /   \
+          /     \
+         /       \
+        /         \
+       /           \ 
+      4            14
+     / \           /\ 
+    /   \         /  \ 
+   3     6       12   16 
+  /      /\      /    /\ 
+ /      /  \    /    /  \ 
+2      5    7  10   15   18
+                    /\
+                   /  \
+                  17  20
 ```
 ### 12. 
 
