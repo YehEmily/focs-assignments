@@ -1,0 +1,11 @@
+Emily Yeh
+Assignment 17, Task 3
+
+Node	Value
+a	0
+b	10
+c	5 (or b + 7 = 17, but 17 is bigger so we ignore it)
+d	b + 3 = 13
+e	b + 5 = 15
+f	e + 2 = 17 (or g + 3 = 24, but 24 is bigger)
+g	d + 8 = 21 OR f + 4 = 21
